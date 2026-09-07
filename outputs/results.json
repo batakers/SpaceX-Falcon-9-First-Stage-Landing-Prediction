@@ -1,0 +1,481 @@
+{
+  "dataset": {
+    "rows": 90,
+    "successful_landings": 60,
+    "failed_landings": 30,
+    "success_rate": 0.6666666666666666,
+    "date_range": [
+      "2010-06-04",
+      "2020-11-05"
+    ],
+    "launch_sites": [
+      "CCAFS SLC 40",
+      "KSC LC 39A",
+      "VAFB SLC 4E"
+    ],
+    "orbits": [
+      "ES-L1",
+      "GEO",
+      "GTO",
+      "HEO",
+      "ISS",
+      "LEO",
+      "MEO",
+      "PO",
+      "SO",
+      "SSO",
+      "VLEO"
+    ]
+  },
+  "eda": {
+    "site_success": [
+      {
+        "LaunchSite": "CCAFS SLC 40",
+        "count": 55,
+        "successes": 33,
+        "success_rate": 0.6
+      },
+      {
+        "LaunchSite": "KSC LC 39A",
+        "count": 22,
+        "successes": 17,
+        "success_rate": 0.7727272727272727
+      },
+      {
+        "LaunchSite": "VAFB SLC 4E",
+        "count": 13,
+        "successes": 10,
+        "success_rate": 0.7692307692307693
+      }
+    ],
+    "orbit_success": [
+      {
+        "Orbit": "ES-L1",
+        "count": 1,
+        "successes": 1,
+        "success_rate": 1.0
+      },
+      {
+        "Orbit": "GEO",
+        "count": 1,
+        "successes": 1,
+        "success_rate": 1.0
+      },
+      {
+        "Orbit": "HEO",
+        "count": 1,
+        "successes": 1,
+        "success_rate": 1.0
+      },
+      {
+        "Orbit": "SSO",
+        "count": 5,
+        "successes": 5,
+        "success_rate": 1.0
+      },
+      {
+        "Orbit": "VLEO",
+        "count": 14,
+        "successes": 12,
+        "success_rate": 0.8571428571428571
+      },
+      {
+        "Orbit": "LEO",
+        "count": 7,
+        "successes": 5,
+        "success_rate": 0.7142857142857143
+      },
+      {
+        "Orbit": "PO",
+        "count": 9,
+        "successes": 6,
+        "success_rate": 0.6666666666666666
+      },
+      {
+        "Orbit": "MEO",
+        "count": 3,
+        "successes": 2,
+        "success_rate": 0.6666666666666666
+      },
+      {
+        "Orbit": "ISS",
+        "count": 21,
+        "successes": 13,
+        "success_rate": 0.6190476190476191
+      },
+      {
+        "Orbit": "GTO",
+        "count": 27,
+        "successes": 14,
+        "success_rate": 0.5185185185185185
+      },
+      {
+        "Orbit": "SO",
+        "count": 1,
+        "successes": 0,
+        "success_rate": 0.0
+      }
+    ],
+    "yearly_success": [
+      {
+        "Year": 2010,
+        "count": 1,
+        "successes": 0,
+        "success_rate": 0.0
+      },
+      {
+        "Year": 2012,
+        "count": 1,
+        "successes": 0,
+        "success_rate": 0.0
+      },
+      {
+        "Year": 2013,
+        "count": 3,
+        "successes": 0,
+        "success_rate": 0.0
+      },
+      {
+        "Year": 2014,
+        "count": 6,
+        "successes": 2,
+        "success_rate": 0.3333333333333333
+      },
+      {
+        "Year": 2015,
+        "count": 6,
+        "successes": 2,
+        "success_rate": 0.3333333333333333
+      },
+      {
+        "Year": 2016,
+        "count": 8,
+        "successes": 5,
+        "success_rate": 0.625
+      },
+      {
+        "Year": 2017,
+        "count": 18,
+        "successes": 15,
+        "success_rate": 0.8333333333333334
+      },
+      {
+        "Year": 2018,
+        "count": 18,
+        "successes": 11,
+        "success_rate": 0.6111111111111112
+      },
+      {
+        "Year": 2019,
+        "count": 10,
+        "successes": 9,
+        "success_rate": 0.9
+      },
+      {
+        "Year": 2020,
+        "count": 19,
+        "successes": 16,
+        "success_rate": 0.8421052631578947
+      }
+    ],
+    "payload_bins": [
+      {
+        "payload_bin": "0-1t",
+        "count": 7,
+        "successes": 3,
+        "success_rate": 0.42857142857142855
+      },
+      {
+        "payload_bin": "1-3t",
+        "count": 22,
+        "successes": 15,
+        "success_rate": 0.6818181818181818
+      },
+      {
+        "payload_bin": "3-5t",
+        "count": 19,
+        "successes": 13,
+        "success_rate": 0.6842105263157895
+      },
+      {
+        "payload_bin": "5-7t",
+        "count": 17,
+        "successes": 7,
+        "success_rate": 0.4117647058823529
+      },
+      {
+        "payload_bin": "7-10t",
+        "count": 10,
+        "successes": 9,
+        "success_rate": 0.9
+      },
+      {
+        "payload_bin": "10-20t",
+        "count": 15,
+        "successes": 13,
+        "success_rate": 0.8666666666666667
+      }
+    ]
+  },
+  "dashboard": {
+    "rows": 56,
+    "largest_success_count_site": "KSC LC-39A",
+    "highest_success_rate_site": "KSC LC-39A",
+    "site_success": [
+      {
+        "Launch Site": "CCAFS LC-40",
+        "count": 26,
+        "successes": 7,
+        "success_rate": 0.2692307692307692
+      },
+      {
+        "Launch Site": "CCAFS SLC-40",
+        "count": 7,
+        "successes": 3,
+        "success_rate": 0.42857142857142855
+      },
+      {
+        "Launch Site": "KSC LC-39A",
+        "count": 13,
+        "successes": 10,
+        "success_rate": 0.7692307692307693
+      },
+      {
+        "Launch Site": "VAFB SLC-4E",
+        "count": 10,
+        "successes": 4,
+        "success_rate": 0.4
+      }
+    ],
+    "payload_bins": [
+      {
+        "payload_bin": "0-1t",
+        "count": 10,
+        "successes": 2,
+        "success_rate": 0.2
+      },
+      {
+        "payload_bin": "1-3t",
+        "count": 13,
+        "successes": 6,
+        "success_rate": 0.46153846153846156
+      },
+      {
+        "payload_bin": "3-5t",
+        "count": 19,
+        "successes": 11,
+        "success_rate": 0.5789473684210527
+      },
+      {
+        "payload_bin": "5-7t",
+        "count": 9,
+        "successes": 2,
+        "success_rate": 0.2222222222222222
+      },
+      {
+        "payload_bin": "7-10t",
+        "count": 5,
+        "successes": 3,
+        "success_rate": 0.6
+      }
+    ],
+    "booster_categories": [
+      {
+        "Booster Version Category": "B5",
+        "count": 1,
+        "successes": 1,
+        "success_rate": 1.0
+      },
+      {
+        "Booster Version Category": "FT",
+        "count": 24,
+        "successes": 16,
+        "success_rate": 0.6666666666666666
+      },
+      {
+        "Booster Version Category": "B4",
+        "count": 11,
+        "successes": 6,
+        "success_rate": 0.5454545454545454
+      },
+      {
+        "Booster Version Category": "v1.1",
+        "count": 15,
+        "successes": 1,
+        "success_rate": 0.06666666666666667
+      },
+      {
+        "Booster Version Category": "v1.0",
+        "count": 5,
+        "successes": 0,
+        "success_rate": 0.0
+      }
+    ]
+  },
+  "sql": {
+    "unique_launch_sites": [
+      "CCAFS LC-40",
+      "CCAFS SLC-40",
+      "KSC LC-39A",
+      "VAFB SLC-4E"
+    ],
+    "nasa_crs_payload_kg": 48213,
+    "f9_v11_average_payload_kg": 2534.6666666666665,
+    "first_successful_ground_pad_landing": "2015-12-22",
+    "drone_ship_4_to_6_t_boosters": [
+      "F9 FT  B1021.2",
+      "F9 FT  B1031.2",
+      "F9 FT B1022",
+      "F9 FT B1026"
+    ],
+    "mission_outcomes": [
+      {
+        "outcome": "Failure",
+        "count": 1
+      },
+      {
+        "outcome": "Success",
+        "count": 100
+      }
+    ],
+    "maximum_payload_boosters": [
+      "F9 B5 B1048.4",
+      "F9 B5 B1048.5",
+      "F9 B5 B1049.4",
+      "F9 B5 B1049.5",
+      "F9 B5 B1049.7 ",
+      "F9 B5 B1051.3",
+      "F9 B5 B1051.4",
+      "F9 B5 B1051.6",
+      "F9 B5 B1056.4",
+      "F9 B5 B1058.3 ",
+      "F9 B5 B1060.2 ",
+      "F9 B5 B1060.3"
+    ],
+    "2015_drone_ship_failures": [
+      {
+        "month": "01",
+        "Booster_Version": "F9 v1.1 B1012",
+        "Launch_Site": "CCAFS LC-40"
+      },
+      {
+        "month": "04",
+        "Booster_Version": "F9 v1.1 B1015",
+        "Launch_Site": "CCAFS LC-40"
+      }
+    ],
+    "landing_outcome_ranking": [
+      {
+        "landing_outcome": "No attempt",
+        "count": 10
+      },
+      {
+        "landing_outcome": "Failure (drone ship)",
+        "count": 5
+      },
+      {
+        "landing_outcome": "Success (drone ship)",
+        "count": 5
+      },
+      {
+        "landing_outcome": "Controlled (ocean)",
+        "count": 3
+      },
+      {
+        "landing_outcome": "Success (ground pad)",
+        "count": 3
+      },
+      {
+        "landing_outcome": "Failure (parachute)",
+        "count": 2
+      },
+      {
+        "landing_outcome": "Uncontrolled (ocean)",
+        "count": 2
+      },
+      {
+        "landing_outcome": "Precluded (drone ship)",
+        "count": 1
+      }
+    ]
+  },
+  "map": {
+    "site_success": [
+      {
+        "Launch Site": "CCAFS LC-40",
+        "count": 26,
+        "successes": 7,
+        "success_rate": 0.2692307692307692
+      },
+      {
+        "Launch Site": "CCAFS SLC-40",
+        "count": 7,
+        "successes": 3,
+        "success_rate": 0.42857142857142855
+      },
+      {
+        "Launch Site": "KSC LC-39A",
+        "count": 13,
+        "successes": 10,
+        "success_rate": 0.7692307692307693
+      },
+      {
+        "Launch Site": "VAFB SLC-4E",
+        "count": 10,
+        "successes": 4,
+        "success_rate": 0.4
+      }
+    ],
+    "distances": {
+      "coastline_distance_km": 0.7186759894147521,
+      "city_distance_km": 18.14333372809044
+    }
+  },
+  "models": {
+    "setup": {
+      "train_rows": 72,
+      "test_rows": 18,
+      "features": 83
+    },
+    "comparison": [
+      {
+        "model": "Decision Tree",
+        "cv_accuracy": 0.8767857142857143,
+        "test_accuracy": 0.8333333333333334,
+        "true_negative": 3,
+        "false_positive": 3,
+        "false_negative": 0,
+        "true_positive": 12
+      },
+      {
+        "model": "KNN",
+        "cv_accuracy": 0.8482142857142858,
+        "test_accuracy": 0.8333333333333334,
+        "true_negative": 3,
+        "false_positive": 3,
+        "false_negative": 0,
+        "true_positive": 12
+      },
+      {
+        "model": "SVM",
+        "cv_accuracy": 0.8482142857142856,
+        "test_accuracy": 0.8333333333333334,
+        "true_negative": 3,
+        "false_positive": 3,
+        "false_negative": 0,
+        "true_positive": 12
+      },
+      {
+        "model": "Logistic Regression",
+        "cv_accuracy": 0.8464285714285713,
+        "test_accuracy": 0.8333333333333334,
+        "true_negative": 3,
+        "false_positive": 3,
+        "false_negative": 0,
+        "true_positive": 12
+      }
+    ],
+    "best_cv_model": "Decision Tree",
+    "best_cv_accuracy": 0.8767857142857143
+  }
+}
