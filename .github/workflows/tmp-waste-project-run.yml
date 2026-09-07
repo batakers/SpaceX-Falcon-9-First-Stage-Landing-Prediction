@@ -1,0 +1,176 @@
+name: Temporary waste project run
+
+on:
+  push:
+    branches:
+      - tmp-waste-project-run
+
+jobs:
+  execute-notebook:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install tensorflow==2.17.0 numpy==1.26.4 scikit-learn==1.5.1 matplotlib==3.9.2 nbconvert jupyter ipykernel requests tqdm pillow
+
+      - name: Download clean course notebook template
+        run: |
+          python - <<'PY'
+          import requests
+          url = 'https://raw.githubusercontent.com/Aymanmuz1/AI_code_Projects/main/Final%20Proj-Classify%20Waste%20Products%20Using%20TL%20FT.ipynb'
+          r = requests.get(url, timeout=60)
+          r.raise_for_status()
+          open('Final project.ipynb', 'wb').write(r.content)
+          print('Downloaded', len(r.content), 'bytes')
+          PY
+
+      - name: Fill assignment tasks
+        run: |
+          python - <<'PY'
+          import json
+
+          p = 'Final project.ipynb'
+          with open(p, encoding='utf-8') as f:
+              nb = json.load(f)
+
+          for c in nb['cells']:
+              if c.get('cell_type') == 'code':
+                  c['outputs'] = []
+                  c['execution_count'] = None
+
+          def set_code_after_heading(needle, code):
+              for i, cell in enumerate(nb['cells']):
+                  if cell.get('cell_type') == 'markdown' and needle in ''.join(cell.get('source', [])):
+                      for j in range(i + 1, len(nb['cells'])):
+                          if nb['cells'][j].get('cell_type') == 'code':
+                              nb['cells'][j]['source'] = code.splitlines(True)
+                              nb['cells'][j]['outputs'] = []
+                              nb['cells'][j]['execution_count'] = None
+                              print('Patched', needle, 'at cell', j)
+                              return
+              raise RuntimeError('Heading not found: ' + needle)
+
+          set_code_after_heading('Task 1: Print the version of tensorflow', '''# Task 1: Print the version of TensorFlow
+print(tf.__version__)
+''')
+
+          set_code_after_heading('Task 2: Create a `test_generator`', '''# Task 2: Create a `test_generator` using the `test_datagen` object
+test_generator = test_datagen.flow_from_directory(
+    directory=path_test,
+    class_mode='binary',
+    seed=seed,
+    batch_size=batch_size,
+    shuffle=False,
+    target_size=(img_rows, img_cols)
+)
+''')
+
+          set_code_after_heading('Task 3: Print the length of the `train_generator`', '''# Task 3: Print the length of the `train_generator`
+print(len(train_generator))
+''')
+
+          set_code_after_heading('Task 4: Print the summary of the model', '''# Task 4: Print the summary of the model
+model.summary()
+''')
+
+          set_code_after_heading('Task 5: Compile the model', '''# Task 5: Compile the model
+model.compile(
+    loss='binary_crossentropy',
+    optimizer=tf.keras.optimizers.Adam(learning_rate=1e-5),
+    metrics=['accuracy']
+)
+''')
+
+          set_code_after_heading('Task 6: Plot accuracy curves for training and validation sets', '''history = extract_feat_model
+
+# Task 6: Plot accuracy curves for training and validation sets
+plt.figure(figsize=(5, 5))
+plt.plot(history.history['accuracy'], label='Training Accuracy')
+plt.plot(history.history['val_accuracy'], label='Validation Accuracy')
+plt.title('Accuracy Curve')
+plt.xlabel('Epochs')
+plt.ylabel('Accuracy')
+plt.legend()
+plt.show()
+''')
+
+          set_code_after_heading('Task 7: Plot loss curves for training and validation sets', '''history = fine_tune_model
+
+# Task 7: Plot loss curves for training and validation sets (fine tune model)
+plt.figure(figsize=(5, 5))
+plt.plot(history.history['loss'], label='Training Loss')
+plt.plot(history.history['val_loss'], label='Validation Loss')
+plt.title('Loss Curve')
+plt.xlabel('Epochs')
+plt.ylabel('Loss')
+plt.legend()
+plt.show()
+''')
+
+          set_code_after_heading('Task 8: Plot accuracy curves for training and validation sets', '''history = fine_tune_model
+
+# Task 8: Plot accuracy curves for training and validation sets (fine tune model)
+plt.figure(figsize=(5, 5))
+plt.plot(history.history['accuracy'], label='Training Accuracy')
+plt.plot(history.history['val_accuracy'], label='Validation Accuracy')
+plt.title('Accuracy Curve')
+plt.xlabel('Epochs')
+plt.ylabel('Accuracy')
+plt.legend()
+plt.show()
+''')
+
+          set_code_after_heading('Task 9: Plot a test image using Extract Features Model', '''# Task 9: Plot a test image using Extract Features Model (index_to_plot = 1)
+index_to_plot = 1
+plot_image_with_title(
+    image=test_imgs[index_to_plot].astype('uint8'),
+    model_name='Extract Features Model',
+    actual_label=test_labels[index_to_plot],
+    predicted_label=predictions_extract_feat_model[index_to_plot]
+)
+''')
+
+          set_code_after_heading('Task 10: Plot a test image using Fine-Tuned Model', '''# Task 10: Plot a test image using Fine-Tuned Model (index_to_plot = 1)
+index_to_plot = 1
+plot_image_with_title(
+    image=test_imgs[index_to_plot].astype('uint8'),
+    model_name='Fine-Tuned Model',
+    actual_label=test_labels[index_to_plot],
+    predicted_label=predictions_fine_tune_model[index_to_plot]
+)
+''')
+
+          nb.setdefault('metadata', {})['completed_tasks'] = list(range(1, 11))
+          with open(p, 'w', encoding='utf-8') as f:
+              json.dump(nb, f, ensure_ascii=False, indent=1)
+          PY
+
+      - name: Execute notebook
+        env:
+          MPLBACKEND: Agg
+          TF_CPP_MIN_LOG_LEVEL: '2'
+        run: |
+          jupyter nbconvert --to notebook --execute 'Final project.ipynb' --output 'Final project-executed.ipynb' --ExecutePreprocessor.timeout=1800 --ExecutePreprocessor.kernel_name=python3
+
+      - name: Upload executed notebook
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: final-project-executed
+          path: |
+            Final project-executed.ipynb
+            O_R_tlearn_vgg16.keras
+            O_R_tlearn_fine_tune_vgg16.keras
+          if-no-files-found: warn
+          retention-days: 1
